@@ -6,6 +6,7 @@ public class Palavras {
 	private String[] palavras = new String[]{"ARPANET", "BROWSER", "CLIENTE", "FLUXOGRAMA", "DOWNLOAD", "FIREWALL",
 			"INTERNET", "NAVEGACAO", "PACOTE", "PROTOCOLO", "ROTEADOR", "REPETIDOR"};
 	
+	//Gerador de palavras
 	public String getPalavras() {
 		Random random = new Random();
 		int x = random.nextInt(12);
