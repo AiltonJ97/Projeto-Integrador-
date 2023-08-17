@@ -29,27 +29,47 @@ public class Programa {
 
 		int tamanho = x.length();
 
-		// Teste de impressão de letras
-		/*
-		 * for (int i = 0; i < x.length(); i++) { System.out.print(c[i] + " "); }
-		 */
-
 		String[] resultado = new String[tamanho];
 
-		for (int j = 0; j < tamanho; j++) {
-			resultado[j] = "_ ";
-		}
+		char repetir = 'S';
 
-		for (int i = 0; i < 8; i++) {
-			System.out.println();
-			System.out.println("Digite uma letra: ");
-			char letra = sc.next().charAt(0);
+		while (repetir == 'S') {
+
 			for (int j = 0; j < tamanho; j++) {
-				if (c[j] == letra) {
-					resultado[j] = letra + "";
+				resultado[j] = "_ ";
+			}
+
+			// inicio do game
+			for (int i = 0; i < 8; i++) {
+				System.out.println();
+				System.out.println("Digite uma letra: ");
+				char letra = sc.next().toUpperCase().charAt(0);
+				for (int j = 0; j < tamanho; j++) {
+					if (c[j] == letra) {
+						resultado[j] = letra + "";
+					}
+				}
+
+				// Saida do resultado do game
+				System.out.println(Arrays.toString(resultado));
+				System.out.println();
+
+				// Reponder a palavra chave
+				System.out.println("Deseja responder a palavra? S/N");
+				char responder = sc.next().toUpperCase().charAt(0);
+				if (responder == 'S') {
+					sc.nextLine();
+					System.out.println("Qual a palavra?");
+					System.out.println(x);
+					String palavra = sc.nextLine().toUpperCase();
+					if (palavra == x) {
+						System.out.println("Você Acertou!!");
+					}
 				}
 			}
-			System.out.println(Arrays.toString(resultado));
+			// Continue
+			System.out.println("Deseja continuar o Game? S/N");
+			repetir = sc.next().charAt(0);
 		}
 
 		sc.close();
