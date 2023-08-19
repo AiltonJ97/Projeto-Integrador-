@@ -9,9 +9,7 @@ public class Programa {
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
-
 		Palavras pl = new Palavras();
-
 		char[] c = null;
 
 		System.out.println("-------------------------------");
@@ -21,19 +19,16 @@ public class Programa {
 		System.out.println("-------------------------------");
 		System.out.println();
 		System.out.println("Voçê tem 8 Tentativas!!");
-		String x = pl.getPalavras();
-
-		c = x.toCharArray();
-
-		System.out.println(x);
-
-		int tamanho = x.length();
-
-		String[] resultado = new String[tamanho];
 
 		char repetir = 'S';
 
 		while (repetir == 'S') {
+			// Buscar palavra e armazenar num array
+			String x = pl.getPalavras();
+			c = x.toCharArray();
+			System.out.println(x);
+			int tamanho = x.length();
+			String[] resultado = new String[tamanho];
 
 			for (int j = 0; j < tamanho; j++) {
 				resultado[j] = "_ ";
@@ -49,7 +44,6 @@ public class Programa {
 						resultado[j] = letra + "";
 					}
 				}
-
 				// Saida do resultado do game
 				System.out.println(Arrays.toString(resultado));
 				System.out.println();
@@ -62,14 +56,18 @@ public class Programa {
 					System.out.println("Qual a palavra?");
 					System.out.println(x);
 					String palavra = sc.nextLine().toUpperCase();
-					if (palavra == x) {
+					if (palavra.equals(x)) {
 						System.out.println("Você Acertou!!");
+						break;
+					} else {
+						System.out.println("Você errou, continue tentando");
+						continue;
 					}
 				}
 			}
 			// Continue
 			System.out.println("Deseja continuar o Game? S/N");
-			repetir = sc.next().charAt(0);
+			repetir = sc.next().toUpperCase().charAt(0);
 		}
 
 		sc.close();
